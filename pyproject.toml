@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "secmend"
+version = "0.1.0"
+description = "Find leaked secrets and get an exact, AI-generated remediation playbook — revoke, rotate, and scrub from git history."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Jay Tank", email = "tankjai24@gmail.com" }]
+requires-python = ">=3.9"
+dependencies = ["rich>=13.0"]
+keywords = ["secrets", "security", "devsecops", "ai", "llm", "git", "remediation", "gitleaks", "credentials"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+    "Topic :: Software Development :: Version Control :: Git",
+]
+
+[project.optional-dependencies]
+claude = ["anthropic>=0.40"]
+openai = ["openai>=1.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+secmend = "secmend.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/jay-tank/secmend"
+Repository = "https://github.com/jay-tank/secmend"
+Issues = "https://github.com/jay-tank/secmend/issues"
+
+[tool.setuptools.packages.find]
+include = ["secmend*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
